@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const Member = require('./Member.js');
 const Post = require('./Post');
 const Comment = require('./Comment');
@@ -37,7 +36,3 @@ Post.hasMany(Comment, {
 });
 
 module.exports = { Member, Post, Comment, Like }
-=======
-
-
->>>>>>> 7a45528e54e1b53ccdc3c6b8657ffb66d3160626

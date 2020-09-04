@@ -16,7 +16,9 @@
     "sequelize": "^6.3.5",
     "session": "^0.1.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "jest": "^26.4.2"
+  },
   "scripts": {
     "test": "jest",
     "start": "node server.js"
@@ -30,5 +32,6 @@
   "bugs": {
     "url": "https://github.com/DevelopedByDay/commonunity/issues"
   },
-  "homepage": "https://github.com/DevelopedByDay/commonunity#readme"
+  "homepage": "https://github.com/DevelopedByDay/commonunity#readme",
+  "keywords": []
 }
