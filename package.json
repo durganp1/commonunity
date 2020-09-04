@@ -16,9 +16,15 @@
     "sequelize": "^6.3.5",
     "session": "^0.1.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "jest": "^26.4.2"
+  },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "node server.js",
+    "migrate": "sqlite3 db/election.db < db/schema.sql",
+    "seed": "sqlite3 db/election.db < db/seeds.sql",
+    "db": "sqlite3 db/election.db"
   },
   "repository": {
     "type": "git",
@@ -29,5 +35,6 @@
   "bugs": {
     "url": "https://github.com/DevelopedByDay/commonunity/issues"
   },
-  "homepage": "https://github.com/DevelopedByDay/commonunity#readme"
+  "homepage": "https://github.com/DevelopedByDay/commonunity#readme",
+  "keywords": []
 }
