@@ -59,6 +59,11 @@ Member.init(
             type: DataTypes.INTEGER,
             allowNull: false,
             autoIncrement: true
+        },
+        family_size: {
+            type: DataTypes.STRING,
+            allowNull: true,
+            autoIncrement: true
         }
     },
     {
