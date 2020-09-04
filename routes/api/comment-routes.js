@@ -3,7 +3,7 @@ const { Comment } = require('../../models');
 
 router.get('/', (req, res) => {
     Comment.findAll({})
-    .then(dbUserData => res.json(dbUserData))
+    .then(dbMemberData => res.json(dbMemberData))
     .catch(err => {
         console.log(err);
         res.status(500).json(err);
@@ -15,7 +15,7 @@ router.post('/', (req, res) => {
     Comment.create({
       comment_text: req.body.comment_text,
       post_id: req.body.post_id,
-      user_id: req.session.user_id
+      member_id: req.session.member_id
     })
       .then(dbCommentData => res.json(dbCommentData))
       .catch(err => {

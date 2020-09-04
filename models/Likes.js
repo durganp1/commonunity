@@ -10,11 +10,11 @@ Like.init(
             primaryKey: true,
             autoIncrement: true
         },
-        user_id: {
+        member_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
-                model: 'user',
+                model: 'member',
                 key: 'id'
             }
         },
