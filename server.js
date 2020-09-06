@@ -1,42 +1,36 @@
-const sqlite3 = require('sqlite3').verbose();
-
-//bring in express
 const express = require('express');
+const routes = require('./controllers');
+const sequelize = require('./config/connection');
+const path = require('path');
+const exphbs = require('express-handlebars');
+const session = require('express-session');
+const helpers = require('./utils/helpers');
+const hbs = exphbs.create({ helpers });
 
-//initiate server
-const app = express();
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
-//set environment variable for Heroku
-const PORT = process.env.PORT || 3001;
-
-// const apiRoutes = require('./controllers/api');
-
-//express middleware
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
-//middleware for front
-// app.use(express.static('public'));
-
-// Connect to database
-const db = new sqlite3.Database('./db/election.db', err => {
-    if (err) {
-      return console.error(err.message);
-    }
+const sess = {
+    secret: 'Super secret secret',
+    cookie: {},
+    resave: false,
+    saveUninitialized: true,
+    store: new SequelizeStore({
+      db: sequelize
+    })
+  };
   
-    console.log('Connected to the election database.');
+  const app = express();
+  const PORT = process.env.PORT || 3001;
+  
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: true }));
+  app.use(express.static(path.join(__dirname, 'public')));
+  app.engine('handlebars', hbs.engine);
+  app.set('view engine', 'handlebars');
+  app.use(session(sess));
+  
+  app.use(routes);
+  
+  sequelize.sync({ force: false }).then(() => {
+    app.listen(PORT, () => console.log('Now listening'));
   });
-
-// // Use apiRoutes
-// app.use('/api', apiRoutes);
-
-app.get('/', (req, res) => {
-    res.json({
-      message: 'Hello World'
-    });
-  });
-
-//make server listen
-app.listen(PORT, () => {
-  console.log(`API server now on port ${PORT}!`);
-});
