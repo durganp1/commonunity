@@ -20,18 +20,15 @@ Member.init(
         },
         street_address: {
             type: DataTypes.STRING,
-            allowNull: false,
-            autoIncrement: true
+            allowNull: false
         },
         city: {
             type: DataTypes.STRING,
-            allowNull: false,
-            autoIncrement: true
+            allowNull: false
         },
         zipcode: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            autoIncrement: true,
             validate: {
                 len: [5]
             }
@@ -57,13 +54,11 @@ Member.init(
         },
         years_at_address: {
             type: DataTypes.INTEGER,
-            allowNull: false,
-            autoIncrement: true
+            allowNull: false
         },
         family_size: {
             type: DataTypes.STRING,
-            allowNull: true,
-            autoIncrement: true
+            allowNull: true
         }
     },
     {

@@ -16,12 +16,10 @@ Post.init(
         title: {
             type: DataTypes.STRING,
             allowNull: false,
-            autoIncrement: true
         },
         post_message: {
             type: DataTypes.STRING,
             allowNull: false,
-            autoIncrement: true
         },
         member_id: {
             type: DataTypes.INTEGER,
