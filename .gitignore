@@ -112,3 +112,6 @@ dist
 dotenv
 
 .env
+
+node_modules
+
