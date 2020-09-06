@@ -1,16 +1,31 @@
 <article class="post">
       <div class="title">
         <a href="{{post_url}}" target="_blank">{{title}}</a>
-        <span>({{format_url post_url}})</span>
+        <span>({{format_url post.post_url}})</span>
       </div>
       <div class="meta">
-        {{like_count}} {{format_plural "point" like_count}} by {{user.username}} on
-        {{format_date created_at}}
+        {{like_count}} {{format_plural "point" post.like_count}} by {{user.username}} on
+        {{format_date post.created_at}}
         |
-        <a href="/post/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
+        <a href="/post/{{post.id}}">{{post.comments.length}} {{format_plural "comment" post.comments.length}}</a>
       </div>
 </article>
 
+<form class="comment-form">
+  <div>
+    <textarea name="comment-body"></textarea>
+  </div>
+
+  <div>
+    <button type="submit">add comment</button>
+    <button type="button" class="like-btn">like</button>
+  </div>
+</form>
+
+{{ comments post.comments}}
+
 {{#if loggedIn}}
-<script src="/javascript/upvote.js"></script>
+<script src="/javascript/like.js"></script>
+<script src="/javascript/comment.js"></script>
+<script src="/javascript/add-post.js"></script>
 {{/if}}
