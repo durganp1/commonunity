@@ -55,7 +55,7 @@ router.post('/', (req, res) => {
             req.session.user_id = dbMemberData.id;
             req.session.username = dbMemberData.username;
             req.session.loggedIn = true;
-            req.json(dbMemberData);
+            res.json(dbMemberData);
         });
     })
     .catch(err => {
