@@ -41,7 +41,8 @@ async function signupFormHandler(event) {
         });
 
         if (response.ok) {
-            document.location.replace('/yourpage/');
+            console.log('success');
+            //document.location.replace('/yourpage/');
         } else {
             alert(response.statusText);
         }
