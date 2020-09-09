@@ -4,7 +4,7 @@ async function newFormHandler(event) {
     const title = document.querySelector('input[name="post-title"]').value;
     const post_url = document.querySelector('input[name="post-url"]').value;
 
-    const response = await fetch('/api/post-routes.js', {
+    const response = await fetch('/api/post-routes', {
         method: 'POST',
         body: JSON.stringify({
             title,
@@ -14,7 +14,7 @@ async function newFormHandler(event) {
     });
 
     if (response.ok) {
-        document.location.replace('/yourpage');
+        document.location.replace('./yourpage');
     } else {
         alert(response.statusText);
     }
