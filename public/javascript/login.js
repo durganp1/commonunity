@@ -33,15 +33,8 @@ async function signupFormHandler(event) {
     const famSize = document.querySelector('#family-size').value.trim();
     const email = document.querySelector('#email-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
-    const password = document.querySelector('#password-signup').value.trim();
     
-    ddress 
-    city 
-    zip 
-    residence 
-    
-
-    if (username && email && password) {
+    if (username && address && city && zipcode && residence && famsize && email && password) {
         const response = await fetch ('/api/member-routes.js', {
             method: 'post',
             body: JSON.stringify({
