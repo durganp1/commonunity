@@ -5,7 +5,7 @@ async function loginFormHandler(event) {
     const password = document.querySelector('#password-login').value.trim();
 
     if (email && password) {
-        const response = await fetch('/api/users/login', {
+        const response = await fetch('/controllers/home-routes.js', {
             method: 'post',
             body: JSON.stringify({
                 email,
@@ -26,6 +26,11 @@ async function signupFormHandler(event) {
     event.preventDefault();
 
     const username = document.querySelector('#username-signup').value.trim();
+    const address = document.querySelector('#street-address').value.trim();
+    const city = document.querySelector('#city').value.trim();
+    const zipcode = document.querySelector('#zipcode').value.trim();
+    const residence = document.querySelector('#years-at-residence').value.trim();
+    const famSize = document.querySelector('#family-size').value.trim();
     const email = document.querySelector('#email-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
@@ -37,10 +42,15 @@ async function signupFormHandler(event) {
     
 
     if (username && email && password) {
-        const response = await fetch ('/api/members', {
+        const response = await fetch ('/api/member-routes.js', {
             method: 'post',
             body: JSON.stringify({
                 username,
+                address,
+                city,
+                zipcode,
+                residence,
+                famSize,
                 email,
                 password
             }),
@@ -48,7 +58,7 @@ async function signupFormHandler(event) {
         });
 
         if (response.ok) {
-            document.location.replace('/yourpage/');
+            document.location.replace('/views/yourpage/');
         } else {
             alert(response.statusText);
         }

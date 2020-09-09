@@ -49,7 +49,7 @@ Member.init(
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [8]
+                len: [4]
             }
         },
         years_at_address: {
