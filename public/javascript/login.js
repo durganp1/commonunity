@@ -15,7 +15,7 @@ async function loginFormHandler(event) {
         });
 
         if (response.ok) {
-            document,location.replace('/yourpage/');
+            document.location.replace('/yourpage/');
         } else {
             alert(response.statusText);
         }
@@ -28,6 +28,13 @@ async function signupFormHandler(event) {
     const username = document.querySelector('#username-signup').value.trim();
     const email = document.querySelector('#email-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
+    const password = document.querySelector('#password-signup').value.trim();
+    
+    ddress 
+    city 
+    zip 
+    residence 
+    
 
     if (username && email && password) {
         const response = await fetch ('/api/members', {
