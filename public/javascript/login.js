@@ -5,7 +5,7 @@ async function loginFormHandler(event) {
     const password = document.querySelector('#password-login').value.trim();
 
     if (email && password) {
-        const response = await fetch('/api/member/login', {
+        const response = await fetch('/controllers/home-routes.js', {
             method: 'post',
             body: JSON.stringify({
                 email,
@@ -15,7 +15,7 @@ async function loginFormHandler(event) {
         });
 
         if (response.ok) {
-            document,location.replace('/yourpage/');
+            document.location.replace('/yourpage/');
         } else {
             alert(response.statusText);
         }
@@ -26,23 +26,23 @@ async function signupFormHandler(event) {
     event.preventDefault();
 
     const username = document.querySelector('#username-signup').value.trim();
-    const address = document.querySelector('#street-address').value.trim();
+    const street_address = document.querySelector('#street-address').value.trim();
     const city = document.querySelector('#city').value.trim();
     const zipcode = document.querySelector('#zipcode').value.trim();
-    const residence = document.querySelector('#years-at-residence').value.trim();
+    const years_at_address = document.querySelector('#years-at-address').value.trim();
     const famSize = document.querySelector('#family-size').value.trim();
     const email = document.querySelector('#email-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
-
-    if (username && email && password) {
-        const response = await fetch('/api/member', {
+    
+    if (username && street_address && city && zipcode && years_at_address && famSize && email && password) {
+        const response = await fetch ('/api/members', {
             method: 'post',
             body: JSON.stringify({
                 username,
-                address,
+                street_address,
                 city,
                 zipcode,
-                residence,
+                years_at_address,
                 famSize,
                 email,
                 password
@@ -51,8 +51,7 @@ async function signupFormHandler(event) {
         });
 
         if (response.ok) {
-            console.log('success');
-            //document.location.replace('/yourpage/');
+            document.location.replace('/views/yourpage/');
         } else {
             alert(response.statusText);
         }
