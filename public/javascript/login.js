@@ -26,6 +26,11 @@ async function signupFormHandler(event) {
     event.preventDefault();
 
     const username = document.querySelector('#username-signup').value.trim();
+    const address = document.querySelector('#street-address').value.trim();
+    const city = document.querySelector('#city').value.trim();
+    const zipcode = document.querySelector('#zipcode').value.trim();
+    const residence = document.querySelector('#years-at-residence').value.trim();
+    const famSize = document.querySelector('#family-size').value.trim();
     const email = document.querySelector('#email-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
 
@@ -34,6 +39,11 @@ async function signupFormHandler(event) {
             method: 'post',
             body: JSON.stringify({
                 username,
+                address,
+                city,
+                zipcode,
+                residence,
+                famSize,
                 email,
                 password
             }),
