@@ -5,7 +5,7 @@ async function loginFormHandler(event) {
     const password = document.querySelector('#password-login').value.trim();
 
     if (email && password) {
-        const response = await fetch('/api/users/login', {
+        const response = await fetch('/controllers/home-routes.js', {
             method: 'post',
             body: JSON.stringify({
                 email,
@@ -15,7 +15,7 @@ async function loginFormHandler(event) {
         });
 
         if (response.ok) {
-            document,location.replace('/yourpage/');
+            document.location.replace('/yourpage/');
         } else {
             alert(response.statusText);
         }
@@ -35,7 +35,7 @@ async function signupFormHandler(event) {
     const password = document.querySelector('#password-signup').value.trim();
 
     if (username && email && password) {
-        const response = await fetch ('/api/members', {
+        const response = await fetch ('/api/member-routes.js', {
             method: 'post',
             body: JSON.stringify({
                 username,
@@ -51,7 +51,7 @@ async function signupFormHandler(event) {
         });
 
         if (response.ok) {
-            document.location.replace('/yourpage/');
+            document.location.replace('/views/yourpage/');
         } else {
             alert(response.statusText);
         }
