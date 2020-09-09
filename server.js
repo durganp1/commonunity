@@ -29,6 +29,7 @@ const sess = {
   app.set('view engine', 'handlebars');
   app.use(session(sess));
   
+  
   app.use(routes);
   
   sequelize.sync({ force: false }).then(() => {

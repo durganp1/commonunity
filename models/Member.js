@@ -59,7 +59,7 @@ Member.init(
         family_size: {
             type: DataTypes.STRING,
             allowNull: true
-        }
+        },
     },
     {
         hooks: {

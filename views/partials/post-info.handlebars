@@ -1,0 +1,14 @@
+
+
+<article class = 'post'>
+    <div class = 'title'>
+        <a href = '{{post_text}}'>{{title}}</a>
+        <span>({{post_text}})</span>
+    </div>
+    <div class = 'meta'>
+        {{like_count}} {{format_plural "point" like_count}} by {{member.username}} on
+        {{format_date created_at}}
+        |
+        <a href = '/post/{{id}}'>{{comments.length}} {{format_plural "comment" comments.length}}</a>
+    </div>
+</article>
