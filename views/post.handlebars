@@ -1,7 +1,7 @@
 <article class="post">
       <div class="title">
-        <a href="{{post_url}}" target="_blank">{{title}}</a>
-        <span>({{format_url post.post_url}})</span>
+        <a href="/post/{{post.title}}">{{title}}</a>
+        <span>({{format_url post.post_text}})</span>
       </div>
       <div class="meta">
         {{like_count}} {{format_plural "point" post.like_count}} by {{user.username}} on
@@ -22,7 +22,7 @@
   </div>
 </form>
 
-{{ comments post.comments}}
+{{comments post.comments}}
 
 {{#if loggedIn}}
 <script src="/javascript/like.js"></script>

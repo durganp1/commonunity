@@ -1,5 +1,3 @@
-
-
 const bcrypt = require('bcrypt');
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
@@ -59,7 +57,7 @@ Member.init(
         family_size: {
             type: DataTypes.STRING,
             allowNull: true
-        }
+        },
     },
     {
         hooks: {

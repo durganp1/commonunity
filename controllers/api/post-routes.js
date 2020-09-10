@@ -1,7 +1,7 @@
 
 
 const router = require('express').Router();
-const { Post, Member } = require('../../models');
+const { Post, Member, Comment, Like } = require('../../models');
 const sequelize = require('../../config/connection');
 
 router.get('/', (req, res) => {
@@ -9,6 +9,14 @@ router.get('/', (req, res) => {
         attributes: ['id', 'title', 'post_message', 'created_at'],
         order: [['created_at', 'DESC']],
         include: [
+            {
+                model: Comment,
+                attributes: ['id', 'comment_text', 'member_id', 'created_at'],
+                include: {
+                    model: Member,
+                    attributes: ['username']
+                }
+            },
             {
                 model: Member,
                 attributes: ['username']
@@ -29,6 +37,14 @@ router.get('/:id', (res, req) => {
         },
         attributes: ['id', 'title', 'post_message', 'created_at'],
         include: [
+            {
+                model: Comment,
+                attributes: ['id', 'comment_text', 'post_id', 'member_id', 'created_at'],
+                include: {
+                    model: Member,
+                    attributes: ['username']
+                }
+            },
             {
                 model: Members,
                 attributes: ['username']
@@ -51,7 +67,7 @@ router.get('/:id', (res, req) => {
 router.post('/', (req, res) => {
     Post.create({
         title: req.body.title,
-        member_id: req.body.id,
+        member_id: req.session.member_id,
         post_message: req.body.post_message
     })
     .then(dbPostData => res.json(dbPostData))
