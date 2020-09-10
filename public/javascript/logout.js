@@ -1,5 +1,5 @@
 async function logout() {
-    const response = await fetch('./home-routes', {
+    const response = await fetch('./api/members/logout', {
         method: 'post',
         headers: { 'Content-Type': 'application/json' }
     });

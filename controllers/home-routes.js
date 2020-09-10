@@ -6,15 +6,15 @@ const router = require('express').Router();
 router.get('/', (req, res) => {
     console.log(req.session);
     Post.findAll({
-        where: {
-            member_zipcode: req.session.member_zipcode
-        },
+        // where: {
+        //     member_zipcode: req.session.member_zipcode
+        // },
       attributes: [
         'id',
         'post_message',
         'title',
         'created_at'
-        [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
+        //[sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
       ],
       include: [
         {
@@ -60,8 +60,8 @@ router.get('/post/:id', (req, res) => {
         'id',
         'post_message',
         'title',
-        'created_at',
-        [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
+        'created_at'
+        // [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
       ],
       include: [
         {
