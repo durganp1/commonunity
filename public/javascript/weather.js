@@ -21,11 +21,10 @@ function getToday(zipCode) {
         alert("Unable to connect to OpenWeather");
     })
     .then(function(data) {
-        // for clearing prior data
-        nowEl = document.querySelector("#now");
-        nowEl.textContent = "";
+        
+        weatherContainerEl.textContent = "";
 
-        // create html for today's forcast
+        
         var zipCodeEl = document.createElement("h3")
         zipCodeEl.classList.add("card-title");
         zipCodeEl.textContent = data.name + " (" + new Date().toLocaleDateString() + ")";
@@ -44,15 +43,13 @@ function getToday(zipCode) {
         var iconEl = document.createElement("img");
         iconEl.setAttribute("src", "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png");
 
-        // push data to sections
+        
         zipCodeEl.appendChild(iconEl)
         dataEl.appendChild(zipCodeEl);
         dataEl.appendChild(tempEl);
         dataEl.appendChild(humidEl);
         dataEl.appendChild(windEl);
         sectionEl.appendChild(dataEl);
-        nowEl.appendChild(sectionEl);
-
-        getUV(data.coord.lat, data.coord.lon);
+        weatherContainerEl.appendChild(sectionEl);
         })
 }
