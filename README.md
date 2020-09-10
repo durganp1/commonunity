@@ -1,6 +1,6 @@
 # Commonunity
 
-Community is essential to the development of interpersonal relationships outside of family and school. Everyone deserves to hae a way to connect with their neighbors in a way that is meaninful and helpful, while not relying on in person interaction. 
+Community is essential to the development of interpersonal relationships outside of family and school. Everyone deserves to have a way to connect with their neighbors in a way that is meaningful and helpful, while not relying on in person interaction. 
 
 Commonunity allows communities to connect with each other, and help one another in someone's time of need. It is a way to ensure a strong bond within a community and help everyone feel involved.
 
