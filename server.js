@@ -8,6 +8,7 @@ const exphbs = require('express-handlebars');
 const session = require('express-session');
 const helpers = require('./utils/helpers');
 const hbs = exphbs.create({ helpers });
+// hbs.registerPartials(__dirname + '/views/partials/');
 
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 

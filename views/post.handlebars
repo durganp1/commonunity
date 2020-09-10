@@ -1,28 +1,35 @@
 <article class="post">
-      <div class="title">
-        <a href="/post/{{post.title}}">{{title}}</a>
-        <span>({{format_url post.post_text}})</span>
-      </div>
-      <div class="meta">
-        {{like_count}} {{format_plural "point" post.like_count}} by {{user.username}} on
-        {{format_date post.created_at}}
-        |
-        <a href="/post/{{post.id}}">{{post.comments.length}} {{format_plural "comment" post.comments.length}}</a>
-      </div>
+  <div class="title">
+    <a href="/post/{{post.title}}">{{title}}</a>
+    <!--<span>{{format_url post.post_text}}</span>-->
+  </div>
+  <div class="content">
+    <a href="/post-info/{{post.post_text}}">{{post_text}}</a>
+  </div>
+  <div class="meta">
+    {{like_count}} {{format_plural "point" post.like_count}} by {{user.username}} on
+    {{format_date post.created_at}}
+    |
+    <a href="/api/comments/{{post.id}}">{{post.comments.length}} {{format_plural "comment" post.comments.length}}</a>
+  </div>
+
+</article>
+{{!-- bug-the code above is printing but this code below. For some reason, only the content of the 
+article is being rendered. Nothing in the form in the comment space below is rendering --}}
+<article class="post">
+  <form class="comment-form">
+    <div>
+      <textarea name="comment-body"></textarea>
+    </div>
+
+    <div>
+      <button type="submit">add comment</button>
+      <button type="button" class="like-btn">like</button>
+    </div>
+  </form>
 </article>
 
-<form class="comment-form">
-  <div>
-    <textarea name="comment-body"></textarea>
-  </div>
-
-  <div>
-    <button type="submit">add comment</button>
-    <button type="button" class="like-btn">like</button>
-  </div>
-</form>
-
-{{ comments post.comments}}
+{{comments post.comments}}
 
 {{#if loggedIn}}
 <script src="/javascript/like.js"></script>
