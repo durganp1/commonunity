@@ -1,6 +1,10 @@
 
+const sequelize = require('../..connection/config/connection');
+const { Post, Member, Comment, Likes } = require('../..models/');
+const router = require('express').Router();
 var weatherContainerEl = document.querySelector("#weather-container");
-const zipCode = req.session.member_zipcode;
+const zipCode = router.get(res,req => {
+    req.session.member_zipcode});
 
 getToday(zipCode);
 

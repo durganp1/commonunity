@@ -54,6 +54,7 @@ router.post('/', (req, res) => {
         req.session.save(() => {
             req.session.user_id = dbMemberData.id;
             req.session.username = dbMemberData.username;
+            req.session.zipcode = dbMemberData.zipcode;
             req.session.loggedIn = true;
             res.json(dbMemberData);
         });
@@ -83,6 +84,7 @@ router.post('/login', (req, res) => {
         req.session.save(() => {
             req.session.user_id = dbMemberData.id;
             req.session.username = dbMemberData.username;
+            req.session.zipcode = dbMemberData.zipcode;
             req.session.loggedIn = true;
             res.json({ user: dbMemberData, message: 'You are now logged in!' });
         });
