@@ -62,6 +62,19 @@ router.get('/yourpage', (req, res) => {
 
 });
 
+//attempt to render calendar-breaks server
+router.get('/calendar', (req, res) => {
+  if (req.session.loggedIn) {
+    // res.redirect('/');
+    res.render('./partials/calendar');
+    // return;
+}
+    
+
+ });
+
+
+
 router.get('/post/:id', (req, res) => {
     Post.findOne({
       where: {

@@ -4,6 +4,8 @@
   "description": "",
   "main": "server.js",
   "dependencies": {
+    "@fullcalendar/core": "^5.3.1",
+    "@fullcalendar/daygrid": "^5.3.2",
     "bcrypt": "^5.0.0",
     "calendar": "^0.1.1",
     "connect-session-sequelize": "^7.0.1",
