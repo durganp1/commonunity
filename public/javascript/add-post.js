@@ -14,7 +14,7 @@ async function newFormHandler(event) {
     });
 
     if (response.ok) {
-        document.location.replace('/yourpage');
+        document.location.replace('./yourpage');
     } else {
         alert(response.statusText);
     }
