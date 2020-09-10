@@ -1,6 +1,6 @@
 <article class = 'post'>
     <div class = 'title'>
-        <a href = '{{post_text}}'>{{title}}test</a>
+        <a href = '{{post_text}}'>{{title}}</a>
         <span>({{post_text}})</span>
     </div>
     <div class = 'meta'>
@@ -8,6 +8,6 @@
         {{format_date created_at}}
         |
         {{!-- somethings wrong with this-it doesn't redirect to the comments handlebars --}}
-        <a href = '/post/{{id}}'>{{comments.length}} {{format_plural "comment" comments.length}}</a>
+        <a href = '/comments'>{{comments.length}} {{format_plural "comment" comments.length}}</a>
     </div>
 </article>
