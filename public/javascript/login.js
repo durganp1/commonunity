@@ -1,3 +1,5 @@
+//const { homeRoutes, apiRoutes, yourpageRoutes } = require('./controllers/index')
+
 async function loginFormHandler(event) {
     event.preventDefault();
 
@@ -51,7 +53,7 @@ async function signupFormHandler(event) {
         });
 
         if (response.ok) {
-            document.location.replace('/yourpage');
+            document.location.replace('./yourpage');
         } else {
             alert(response.statusText);
         }
