@@ -9,9 +9,12 @@
         |
         <a href="/post/{{post.id}}">{{post.comments.length}} {{format_plural "comment" post.comments.length}}</a>
       </div>
+      
 </article>
-
-<form class="comment-form">
+{{!-- bug-the code above is printing but this code below. For some reason, only the content of the 
+article is being rendered. Nothing in the form in the comment space below is rendering --}}
+<article class="post">
+  <form class="comment-form">
   <div>
     <textarea name="comment-body"></textarea>
   </div>
@@ -21,6 +24,7 @@
     <button type="button" class="like-btn">like</button>
   </div>
 </form>
+</article>
 
 {{comments post.comments}}
 

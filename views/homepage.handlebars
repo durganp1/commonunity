@@ -1,4 +1,8 @@
 <ol class="post-list">
+    {{!-- //added this so that some description of what the user is looking at when they land on the main page and see post.handlebars in the body --}}
+        <section>
+          <h2> Community Posts</h2>
+      </section>
     {{#each posts as |post|}}
     <li>
         {{> post-info post}}
