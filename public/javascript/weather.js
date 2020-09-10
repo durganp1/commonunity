@@ -1,7 +1,7 @@
 const { member, Member} = require('../../models');
 const { get } = require('../../controllers/api/member-routes');
 var weatherContainerEl = document.querySelector("#weather-container");
-const zipCode = member.zipcode;
+const zipCode = member_zipcode;
 
 getToday(zipCode);
 

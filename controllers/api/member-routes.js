@@ -44,14 +44,18 @@ router.post('/', (req, res) => {
     Member.create({
         username: req.body.username,
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        street_address: req.body.street_address,
+        city: req.body.city,
+        zipcode: req.body.zipcode,
+        years_at_address: req.body.years_at_address
     })
     .then(dbMemberData => {
         req.session.save(() => {
             req.session.user_id = dbMemberData.id;
             req.session.username = dbMemberData.username;
             req.session.loggedIn = true;
-            req.json(dbMemberData);
+            res.json(dbMemberData);
         });
     })
     .catch(err => {
@@ -63,7 +67,7 @@ router.post('/', (req, res) => {
 router.post('/login', (req, res) => {
     Member.findOne({
         where: {
-            email: req.body.email
+            email: req.body.email,
         }
     })
     .then(dbMemberData => {
