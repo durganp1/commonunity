@@ -1,14 +1,37 @@
+<<<<<<< HEAD
+<article class = 'post'>
+    <div class = 'title'>
+        <a href = '{{post_text}}'>{{title}}test</a>
+=======
 
 
 <article class = 'post'>
     <div class = 'title'>
         <a href = '{{post_text}}'>{{title}}</a>
+>>>>>>> c11200b6946a4b5e331280b292d1a1f78bd62b0a
         <span>({{post_text}})</span>
     </div>
     <div class = 'meta'>
         {{like_count}} {{format_plural "point" like_count}} by {{member.username}} on
         {{format_date created_at}}
         |
+<<<<<<< HEAD
+        {{!-- somethings wrong with this-it doesn't redirect to the comments handlebars --}}
+        <a href = '/post/{{id}}'>{{comments.length}} {{format_plural "comment" comments.length}}test</a>
+    </div>
+</article>
+
+{{#if loggedIn}}
+<script src="/javascript/comment.js"></script>
+<script src="/javascript/likes.js"></script>
+<script src="/javascript/add-post.js"></script>
+{{/if}}
+
+{{#if loggedIn}}
+        <a href="comments">yourpage</a>
+{{/if}}
+=======
         <a href = '/post/{{id}}'>{{comments.length}} {{format_plural "comment" comments.length}}</a>
     </div>
 </article>
+>>>>>>> c11200b6946a4b5e331280b292d1a1f78bd62b0a

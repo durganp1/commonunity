@@ -7,7 +7,7 @@ async function loginFormHandler(event) {
     const password = document.querySelector('#password-login').value.trim();
 
     if (email && password) {
-        const response = await fetch('./home-routes', {
+        const response = await fetch('/api/members/login', {
             method: 'post',
             body: JSON.stringify({
                 email,
@@ -17,7 +17,7 @@ async function loginFormHandler(event) {
         });
 
         if (response.ok) {
-            document.location.replace('./yourpage-routes');
+            document.location.replace('/yourpage');
         } else {
             alert(response.statusText);
         }

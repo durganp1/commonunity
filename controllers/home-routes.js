@@ -1,3 +1,4 @@
+  
 const sequelize = require('../config/connection');
 const { Post, Member, Comment, Likes } = require('../models');
 const router = require('express').Router();
@@ -49,6 +50,16 @@ router.get('/login', (req, res) => {
         return;
     }
     res.render('login');
+});
+
+router.get('/yourpage', (req, res) => {
+  if (req.session.loggedIn) {
+    // res.redirect('/');
+    res.render('yourpage.handlebars');
+    // return;
+}
+    
+
 });
 
 router.get('/post/:id', (req, res) => {
