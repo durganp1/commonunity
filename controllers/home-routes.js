@@ -1,10 +1,6 @@
   
 const sequelize = require('../config/connection');
-<<<<<<< HEAD
-const { Post, Member, Comment } = require('../models');
-=======
 const { Post, Member, Comment, Like } = require('../models');
->>>>>>> brad
 const router = require('express').Router();
 
 

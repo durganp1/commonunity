@@ -5,11 +5,17 @@
 // const router = require('express').Router();
 var weatherContainerEl = document.querySelector("#weather-container");
 function grab() {
-    response = fetch('../..controllers/api/member-routes.js')
-    .then
-        const zipCode = response.member.zipcode
-        console.log(response.member.zipcode);
-    getToday(zipCode)
+    const response = fetch('/api/members/login', {
+        method: 'get'
+    });
+   
+    if (response.ok) {
+       
+        response.members.zipcode = zipCode;
+        getToday(zipCode);
+    } else {
+        alert(response.statusText);
+    }
     
 } 
 
@@ -64,4 +70,4 @@ function getToday(zipCode) {
         })
 }
 
-// grab();
+grab();
