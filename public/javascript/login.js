@@ -13,9 +13,9 @@ async function loginFormHandler(event) {
                 email,
                 password
             }),
-            headers: { 'Content-Type': 'application/json' }
+            headers: { 'Content-Type' : 'application/json' }
         });
-
+        
         if (response.ok) {
             document.location.replace('/yourpage');
         } else {
@@ -23,6 +23,8 @@ async function loginFormHandler(event) {
         }
     }
 }
+
+document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
 
 async function signupFormHandler(event) {
     event.preventDefault();
@@ -60,5 +62,5 @@ async function signupFormHandler(event) {
     }
 }
 
-document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
+
 document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
