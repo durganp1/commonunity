@@ -64,4 +64,4 @@ function getToday(zipCode) {
         })
 }
 
-grab();
+// grab();
