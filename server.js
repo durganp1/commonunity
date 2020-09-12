@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> develop
 require('dotenv').config();
 const express = require('express');
 const routes = require('./controllers');
@@ -26,9 +29,13 @@ const sess = {
   const PORT = process.env.PORT || 3001;
   
   app.use(session(sess));
+<<<<<<< HEAD
+=======
+  app.use(express.static(path.join(__dirname, 'public')));
+>>>>>>> develop
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
-  app.use(express.static(path.join(__dirname, 'public')));
+  
   app.engine('handlebars', hbs.engine);
   app.set('view engine', 'handlebars');
   

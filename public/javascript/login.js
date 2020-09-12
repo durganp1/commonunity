@@ -15,8 +15,9 @@ async function loginFormHandler(event) {
             }),
             headers: { 'Content-Type' : 'application/json' }
         });
-        
+       
         if (response.ok) {
+           
             document.location.replace('/yourpage');
         } else {
             alert(response.statusText);
@@ -34,12 +35,12 @@ async function signupFormHandler(event) {
     const city = document.querySelector('#city').value.trim();
     const zipcode = document.querySelector('#zipcode').value.trim();
     const years_at_address = document.querySelector('#years-at-address').value.trim();
-    const famSize = document.querySelector('#family-size').value.trim();
+    const family_size = document.querySelector('#family-size').value.trim();
     const email = document.querySelector('#email-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
     
-    if (username && street_address && city && zipcode && years_at_address && famSize && email && password) {
-        const response = await fetch ('/api/members', {
+    if (username && street_address && city && zipcode && years_at_address && family_size && email && password) {
+        const response = await fetch('/api/members/', {
             method: 'post',
             body: JSON.stringify({
                 username,
@@ -47,15 +48,15 @@ async function signupFormHandler(event) {
                 city,
                 zipcode,
                 years_at_address,
-                famSize,
+                family_size,
                 email,
                 password
             }),
-            headers: { 'Content-Type': 'application/json' }
+            headers: { 'Content-Type' : 'application/json' }
         });
 
         if (response.ok) {
-            document.location.replace('./yourpage');
+            document.location.replace('/yourpage');
         } else {
             alert(response.statusText);
         }
