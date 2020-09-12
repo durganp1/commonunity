@@ -4,14 +4,12 @@ const sequelize = require('../config/connection');
 const { Post, Member, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/', (req, res) => {
-    debugger;
-   console.log(req.session)
-   console.log(req.session.member_id);
+router.get('/', withAuth, (req, res) => {
+   
     Post.findAll({
-        // where: {
-        //     member_id: req.session.member_id
-        // },
+        where: {
+            member_id: req.session.member_id
+        },
         attributes: [
             'id',
             'post_message',
