@@ -4,18 +4,19 @@ async function newFormHandler(event) {
     const title = document.querySelector('input[name="post-title"]').value;
     const post_message = document.querySelector('input[name="post-text"]').value;
 
-    const response = await fetch('./api/posts', {
+    const response = await fetch('/api/posts', {
         method: 'POST',
         body: JSON.stringify({
             title,
             post_message
 
         }),
-        headers: { 'Content-Type': 'application/json' }
+        headers: { 'Content-Type' : 'application/json' }
     });
+    console.log(response);
 
     if (response.ok) {
-        document.location.replace('./yourpage');
+        document.location.replace('/yourpage');
     } else {
         alert(response.statusText);
     }
