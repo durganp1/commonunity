@@ -11,17 +11,17 @@ Post.belongsTo(Member, {
     foreignKey: 'member_id'
 });
 
-// Member.hasMany(Post, {
-//     through: Like,
-//     as: 'liked_posts',
-//     foreignKey: 'member_id'
-// });
+Member.belongsToMany(Post, {
+    through: Like,
+    as: 'liked_posts',
+    foreignKey: 'member_id'
+});
 
-// Post.belongsToMany(Member, {
-//     through: Like,
-//     as: 'liked_posts',
-//     foreignKey: 'member_id'
-// });
+Post.belongsToMany(Member, {
+    through: Like,
+    as: 'liked_posts',
+    foreignKey: 'member_id'
+});
 
 Comment.belongsTo(Member, {
     foreignKey: 'member_id'
