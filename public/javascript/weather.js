@@ -1,12 +1,19 @@
 
-const sequelize = require('../..connection/config/connection');
-const { Post, Member, Comment, Likes } = require('../..models/');
-const router = require('express').Router();
+// const sequelize = require('../..connection/config/connection');
+// const { Post, Member, Comment, Likes } = require('../..models/');
+// const { response } = require('express');
+// const router = require('express').Router();
 var weatherContainerEl = document.querySelector("#weather-container");
-const zipCode = router.get(res,req => {
-    req.session.member_zipcode});
+function grab() {
+    response = fetch('../..controllers/api/member-routes.js')
+    .then
+        const zipCode = response.member.zipcode
+        console.log(response.member.zipcode);
+    getToday(zipCode)
+    
+} 
 
-getToday(zipCode);
+
 
 function getToday(zipCode) {
     var weather = "https://api.openweathermap.org/data/2.5/weather?q=" + zipCode + "&appid=fe8d611a841b4f7219380686ae60e97a&units=imperial";
@@ -56,3 +63,5 @@ function getToday(zipCode) {
         weatherContainerEl.appendChild(sectionEl);
         })
 }
+
+grab();
