@@ -1,5 +1,3 @@
-
-
 <article class = 'post'>
     <div class = 'title'>
         <a href = '{{post_text}}'>{{title}}</a>
@@ -9,6 +7,7 @@
         {{like_count}} {{format_plural "point" like_count}} by {{member.username}} on
         {{format_date created_at}}
         |
-        <a href = '/post/{{id}}'>{{comments.length}} {{format_plural "comment" comments.length}}</a>
+        {{!-- somethings wrong with this-it doesn't redirect to the comments handlebars --}}
+        <a href = '/api/comments'>{{comments.length}} {{format_plural "comment" comments.length}}</a>
     </div>
 </article>

@@ -1,3 +1,4 @@
+  
 const sequelize = require('../config/connection');
 const { Post, Member, Comment, Likes } = require('../models');
 const router = require('express').Router();
@@ -50,6 +51,29 @@ router.get('/login', (req, res) => {
     }
     res.render('login');
 });
+
+router.get('/yourpage', (req, res) => {
+  if (req.session.loggedIn) {
+    // res.redirect('/');
+    res.render('yourpage.handlebars');
+    // return;
+}
+    
+
+});
+
+//attempt to render calendar-breaks server
+router.get('/calendar', (req, res) => {
+  if (req.session.loggedIn) {
+    // res.redirect('/');
+    res.render('./partials/calendar');
+    // return;
+}
+    
+
+ });
+
+
 
 router.get('/post/:id', (req, res) => {
     Post.findOne({

@@ -13,9 +13,9 @@
         <button type = 'submit' class = 'btn'>Create</button>
     </form>
 </section>
-
-{{#if posts.length}}
-<seciton>
+{{!-- somethings wrong with this-the above field is rendered, but the below handlebars is not --}}
+ {{#if loggedIn}}  
+<section>
     <h2>Your Posts</h2>
     <ol>
         {{#each posts as |post|}}
@@ -25,7 +25,7 @@
         </li>
         {{/each}}
     </ol>
-</seciton>
-{{/if}}
+</section> 
+{{/if}} 
 
 <script src="/javascript/add-post.js"></script>
