@@ -55,8 +55,7 @@ Member.init(
             allowNull: false
         },
         family_size: {
-            type: DataTypes.STRING,
-            allowNull: true
+            type: DataTypes.STRING
         },
     },
     {

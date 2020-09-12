@@ -2,20 +2,22 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Post, Member, Comment } = require('../models');
-const { post } = require('./api');
 const withAuth = require('../utils/auth');
 
-router.get('/', withAuth, (req, res) => {
+router.get('/', (req, res) => {
+    debugger;
+   console.log(req.session)
+   console.log(req.session.member_id);
     Post.findAll({
-        where: {
-            member_id: req.session.member_id
-        },
+        // where: {
+        //     member_id: req.session.member_id
+        // },
         attributes: [
             'id',
             'post_message',
             'title',
-            'created_at',
-            [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
+            'created_at'
+            //[sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
         ],
         include: [
             {

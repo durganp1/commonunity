@@ -1,7 +1,8 @@
 
 
 const router = require('express').Router();
-const { Member, Post } = require('../../models');
+const { Member, Post, Comment } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 router.get('/', (req, res) => {
     Member.findAll({
@@ -24,6 +25,14 @@ router.get('/:id', (req, res) => {
             {
                 model: Post,
                 attributes: ['id', 'title', 'post_message', 'created_at']
+            },
+            {
+                model: Comment,
+                attributes: ['id', 'comment_text', 'created_at'],
+                include: {
+                    model: Post,
+                    attributes: ['title']
+                }
             }
         ]
     })
@@ -43,16 +52,17 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
     Member.create({
         username: req.body.username,
-        email: req.body.email,
-        password: req.body.password,
         street_address: req.body.street_address,
         city: req.body.city,
         zipcode: req.body.zipcode,
-        years_at_address: req.body.years_at_address
+        years_at_address: req.body.years_at_address,
+        family_size: req.body.family_size,
+        email: req.body.email,
+        password: req.body.password
     })
     .then(dbMemberData => {
         req.session.save(() => {
-            req.session.user_id = dbMemberData.id;
+            req.session.member_id = dbMemberData.id;
             req.session.username = dbMemberData.username;
             req.session.loggedIn = true;
             res.json(dbMemberData);
@@ -81,10 +91,10 @@ router.post('/login', (req, res) => {
             return;
         }
         req.session.save(() => {
-            req.session.user_id = dbMemberData.id;
+            req.session.member_id = dbMemberData.id;
             req.session.username = dbMemberData.username;
             req.session.loggedIn = true;
-            res.json({ user: dbMemberData, message: 'You are now logged in!' });
+            res.json({ member: dbMemberData, message: 'You are now logged in!' });
         });
     });
 });
@@ -99,7 +109,7 @@ router.post('/logout', (req, res) => {
     }
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
     Member.update(req.body, {
         individualHooks: true,
         where: {
@@ -119,7 +129,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
     Member.destroy({
         where: {
             id: req.params.id
@@ -127,7 +137,7 @@ router.delete('/:id', (req, res) => {
     })
     .then(dbMemberData => {
         if(!dbMemberData) {
-            res.status(404).json({ message: 'No user found with this id' });
+            res.status(404).json({ message: 'No member found with this id' });
             return;
         }
         res.json(dbMemberData);
