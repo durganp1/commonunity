@@ -2,21 +2,19 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Post, Member, Comment } = require('../models');
+//const { post } = require('./api');
 const withAuth = require('../utils/auth');
 
-router.get('/', (req, res) => {
-    debugger;
-   console.log(req.session)
-   console.log(req.session.member_id);
+router.get('/', withAuth, (req, res) => {
     Post.findAll({
-        // where: {
-        //     member_id: req.session.member_id
-        // },
+        where: {
+            member_id: req.session.member_id
+        },
         attributes: [
             'id',
             'post_message',
             'title',
-            'created_at'
+            'created_at',
             //[sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
         ],
         include: [
@@ -45,29 +43,29 @@ router.get('/', (req, res) => {
     
 });
 
-router.get('/:id', withAuth, (req, res) => {
+router.get('/edit/:id', withAuth, (req, res) => {
     Post.findOne({
         where: {
             member_id: req.session.member_id
         },
         attributes: [
             'id',
-            'post_url',
+            'post_message',
             'title',
-            'created_at',
-            [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
+            'created_at'
+            // [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
         ],
         include: [
             {
                 model: Comment,
-                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                attributes: ['id', 'comment_text', 'post_id', 'member_id', 'created_at'],
                 include: {
-                    model: User,
+                    model: Member,
                     attributes: ['username']
                 }
             },
             {
-                model: User,
+                model: Member,
                 attributes: ['username']
             }
         ]
