@@ -16,8 +16,8 @@
 </article>
 {{!-- bug-the code above is printing but this code below. For some reason, only the content of the 
 article is being rendered. Nothing in the form in the comment space below is rendering --}}
-<article class="post">
-  <form class="comment-form">
+{{!-- <article class="post">
+  <form id="comment-form">
     <div>
       <textarea name="comment-body"></textarea>
     </div>
@@ -29,7 +29,7 @@ article is being rendered. Nothing in the form in the comment space below is ren
   </form>
 </article>
 
-{{comments post.comments}}
+{{comments post.comments}} --}}
 
 {{#if loggedIn}}
 <script src="/javascript/like.js"></script>

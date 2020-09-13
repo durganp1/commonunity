@@ -8,6 +8,6 @@
         {{format_date created_at}}
         |
         {{!-- somethings wrong with this-it doesn't redirect to the comments handlebars --}}
-        <a href = '/api/comments'>{{comments.length}} {{format_plural "comment" comments.length}}</a>
+        <a href ="/api/comments/"> {{post.comments.length}} {{format_plural "comment" post.comments.length}}</a>
     </div>
 </article>
