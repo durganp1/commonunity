@@ -15,6 +15,11 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/zipcode', (req, res) => {
+    console.log('dog');
+})
+
+
 router.get('/:id', (req, res) => {
     Member.findOne({
         attributes: { exclude: ['password'] },

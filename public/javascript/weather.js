@@ -6,16 +6,24 @@
 var weatherContainerEl = document.querySelector("#weather-container");
 function grab() {
     const response = fetch('/api/members/login', {
-        method: 'get'
-    });
-   
-    if (response.ok) {
+        method: 'post',
+        body: JSON.stringify({
+            zipcode
+        }),
+        headers: { 'Content-Type' : 'application/json' }
+    }).then(response => {
+        console.log(response);
+        // if (response.ok) {
        
-        response.members.zipcode = zipCode;
-        getToday(zipCode);
-    } else {
-        alert(response.statusText);
-    }
+        //     response.members.zipcode = zipCode;
+        //     console.log(zipCode);
+        //     // getToday(zipCode);
+        // } else {
+        //     alert(response.statusText);
+        // }
+    })
+   
+    
     
 } 
 
@@ -70,4 +78,4 @@ function getToday(zipCode) {
         })
 }
 
-grab();
+// grab();
