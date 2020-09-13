@@ -9,6 +9,6 @@
         {{format_date created_at}}
         |
         {{!-- somethings wrong with this-it doesn't redirect to the comments handlebars --}}
-        <a href = '/post/{{id}}'>{{comments.length}} {{format_plural "comment" comments.length}}</a>
+        <a href = '/post/{{post.id}}'>{{comments.length}} {{format_plural "comment" comments.length}}</a>
     </div>
 </article>
