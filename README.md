@@ -36,7 +36,7 @@ Taryn Fanning: https://github.com/tubataryn
 
 ## Github Repo
 
-https://github.com/DevelopedByDay/commonunity
+https://github.com/durganp1/commonunity
 
 ## Deployed At
 https://stormy-bayou-22043.herokuapp.com/
