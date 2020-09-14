@@ -30,17 +30,12 @@ article is being rendered. Nothing in the form in the comment space below is ren
     </div>
   </form>
 
-  <ol class = 'comment-list'>
-    <section>
-      <h3>Comments</h3>
-    </section>
+  <section>
+    <h3>Comments</h3>
 
-    {{#each posts as |post|}}
-    <li>
-      {{comment-body}}
-    </li>
-    {{/each}}
-  </ol>
+    {{> comments post.comments}}
+  </section>
+
 </article>
 {{comment_text}}
 {{/if}}
