@@ -25,19 +25,6 @@
 //   document.querySelector('.edit-post-form').addEventListener('submit', editFormHandler);
 
 async function editFormHandler(event) {
-<<<<<<< HEAD
-    event.preventDefault();
-    await fetch(`/api/posts/${id}`, {
-        method: 'PUT',
-        body: JSON.stringify({
-          title,
-          post_message
-        }),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-=======
   event.preventDefault();
 
   const title = document.querySelector('input[name="post-title"]').value.trim();
@@ -60,7 +47,6 @@ async function editFormHandler(event) {
     document.location.replace('/yourpage');
   } else {
     alert(response.statusText);
->>>>>>> develop
   }
 }
 
