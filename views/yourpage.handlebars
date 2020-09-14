@@ -11,6 +11,7 @@
         </div>
         <button type = 'submit' class = 'btn'>Create</button>
     </form>
+    {{#if posts.length}}
     <ol class = 'post-list'>
         <section>
             <h2>Your Posts</h2>
@@ -24,6 +25,7 @@
         {{/each}}
         
     </ol>
+    {{/if}}
 </section>
 
 <script src = '/javascript/add-post.js'></script>

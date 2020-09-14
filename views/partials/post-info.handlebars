@@ -8,7 +8,11 @@
         {{like_count}} {{format_plural "post" like_count}} by {{member.username}} on
         {{format_date created_at}}
         |
+<<<<<<< Updated upstream
         {{!-- DO NOT ADD 'post' IN FRONT OF 'id' --}}
+=======
+        {{!-- somethings wrong with this-it doesn't redirect to the comments handlebars --}}
+>>>>>>> Stashed changes
         <a href = '/post/{{id}}'>{{comments.length}} {{format_plural "comment" comments.length}}</a>
     </div>
 </article>

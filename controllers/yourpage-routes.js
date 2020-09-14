@@ -44,10 +44,11 @@ router.get('/', withAuth, (req, res) => {
 });
 
 router.get('/edit/:id', withAuth, (req, res) => {
-    Post.findOne({
-        where: {
-            member_id: req.session.member_id
-        },
+    Post.findByPk(req.params.id, {
+    // Post.findOne({
+    //     where: {
+    //         member_id: req.session.member_id
+    //     },
         attributes: [
             'id',
             'post_message',

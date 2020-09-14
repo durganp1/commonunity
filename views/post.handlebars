@@ -12,7 +12,6 @@
     |
     <a href="/api/comments/{{post.id}}">{{post.comments.length}} {{format_plural "comment" post.comments.length}}</a>
   </div>
-
 </article> --}}
 {{!-- bug-the code above is printing but this code below. For some reason, only the content of the 
 article is being rendered. Nothing in the form in the comment space below is rendering --}}
@@ -43,5 +42,9 @@ article is being rendered. Nothing in the form in the comment space below is ren
 {{#if loggedIn}}
 {{!-- <script src="/javascript/add-post.js"></script> --}}
 <script src="/javascript/comment.js"></script>
+<<<<<<< Updated upstream
 {{!-- <script src="/javascript/likes.js"></script> --}}
+=======
+{{!-- <script src="/javascript/like.js"></script> --}}
+>>>>>>> Stashed changes
 {{/if}}
