@@ -7,19 +7,23 @@
     <div>
       <input name="post-title" type="text" value="{{post.title}}" />
       <br>
+<<<<<<< HEAD
       <textarea name="post-message" type="text" value="{{post.post_message}}">{{post.post_message}}</textarea>
+=======
+      <input name="post-message" type="text" value="{{post.post_message}}" />
+>>>>>>> develop
     </div>
-    <div>
+    {{!-- <div>
       {{like_count}} {{format_plural "point" post.like_count}} by you on {{format_date post.created_at}}
       |
       <a href="/post/{{post.id}}">{{post.comments.length}} {{format_plural "comment" post.comments.length}}</a>
-    </div>
+    </div> --}}
     <button type="submit">Save post</button>
     <button type="button" class="delete-post-btn">Delete post</button>
   </form>
 </article>
 
-<form class="comment-form">
+{{!-- <form class="comment-form">
   <div>
     <textarea name="comment-body"></textarea>
   </div>
@@ -29,8 +33,8 @@
   </div>
 </form>
 
-{{> comments post.comments}}
+{{> comments post.comments}} --}}
 
 <script src="/javascript/edit-post.js"></script>
 <script src="/javascript/delete-post.js"></script>
-<script src="/javascript/comment.js"></script>
+{{!-- <script src="/javascript/comment.js"></script> --}}
