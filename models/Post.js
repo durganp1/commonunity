@@ -15,7 +15,7 @@ Post.init(
         },
         title: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: false
         },
         post_message: {
             type: DataTypes.STRING,
@@ -24,7 +24,7 @@ Post.init(
         member_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'member',
+                model: "member",
                 key: 'id'
             }
         }

@@ -1,7 +1,8 @@
+
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Post, Member, Comment } = require('../models');
-const { post } = require('./api');
+//const { post } = require('./api');
 const withAuth = require('../utils/auth');
 
 router.get('/', withAuth, (req, res) => {
@@ -14,7 +15,7 @@ router.get('/', withAuth, (req, res) => {
             'post_message',
             'title',
             'created_at',
-            [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
+            //[sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
         ],
         include: [
             {
@@ -42,29 +43,30 @@ router.get('/', withAuth, (req, res) => {
     
 });
 
-router.get('/:id', withAuth, (req, res) => {
-    Post.findOne({
-        where: {
-            member_id: req.session.member_id
-        },
+router.get('/edit/:id', withAuth, (req, res) => {
+    Post.findByPk(req.params.id, {
+    // Post.findOne({
+    //     where: {
+    //         member_id: req.session.member_id
+    //     },
         attributes: [
             'id',
-            'post_url',
+            'post_message',
             'title',
-            'created_at',
-            [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
+            'created_at'
+            // [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
         ],
         include: [
             {
                 model: Comment,
-                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                attributes: ['id', 'comment_text', 'post_id', 'member_id', 'created_at'],
                 include: {
-                    model: User,
+                    model: Member,
                     attributes: ['username']
                 }
             },
             {
-                model: User,
+                model: Member,
                 attributes: ['username']
             }
         ]

@@ -1,9 +1,19 @@
-const { member, Member} = require('../../models');
-const { get } = require('../../controllers/api/member-routes');
-var weatherContainerEl = document.querySelector("#weather-container");
-const zipCode = member.zipcode;
 
-getToday(zipCode);
+// const sequelize = require('../..connection/config/connection');
+// const { Post, Member, Comment, Likes } = require('../..models/');
+// const { response } = require('express');
+// const router = require('express').Router();
+var weatherContainerEl = document.querySelector("#weather-container");
+function grab() {
+    response = fetch('../..controllers/api/member-routes.js')
+    .then
+        const zipCode = response.member.zipcode
+        console.log(response.member.zipcode);
+    getToday(zipCode)
+    
+} 
+
+
 
 function getToday(zipCode) {
     var weather = "https://api.openweathermap.org/data/2.5/weather?q=" + zipCode + "&appid=fe8d611a841b4f7219380686ae60e97a&units=imperial";
@@ -21,11 +31,10 @@ function getToday(zipCode) {
         alert("Unable to connect to OpenWeather");
     })
     .then(function(data) {
-        // for clearing prior data
-        nowEl = document.querySelector("#now");
-        nowEl.textContent = "";
+        
+        weatherContainerEl.textContent = "";
 
-        // create html for today's forcast
+        
         var zipCodeEl = document.createElement("h3")
         zipCodeEl.classList.add("card-title");
         zipCodeEl.textContent = data.name + " (" + new Date().toLocaleDateString() + ")";
@@ -44,15 +53,15 @@ function getToday(zipCode) {
         var iconEl = document.createElement("img");
         iconEl.setAttribute("src", "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png");
 
-        // push data to sections
+        
         zipCodeEl.appendChild(iconEl)
         dataEl.appendChild(zipCodeEl);
         dataEl.appendChild(tempEl);
         dataEl.appendChild(humidEl);
         dataEl.appendChild(windEl);
         sectionEl.appendChild(dataEl);
-        nowEl.appendChild(sectionEl);
-
-        getUV(data.coord.lat, data.coord.lon);
+        weatherContainerEl.appendChild(sectionEl);
         })
 }
+
+// grab();
