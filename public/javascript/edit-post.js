@@ -27,18 +27,6 @@
 async function editFormHandler(event) {
   event.preventDefault();
 
-<<<<<<< Updated upstream
-  const post_message = document.querySelector('.post-message').value;
-  const title = document.querySelector('.post-title').value.trim();
-  const id = window.location.toString().split('/')[
-    window.location.toString().split('/').length - 1
-  ];
- 
-  const response = await fetch(`/api/posts/${id}`, {
-    method: 'PUT',
-    body: JSON.stringify({
-      id,
-=======
   const title = document.querySelector('input[name="post-title"]').value.trim();
   const id = window.location.toString().split('/')[
     window.location.toString().split('/').length - 1
@@ -47,7 +35,6 @@ async function editFormHandler(event) {
   const response = await fetch(`/api/posts/${id}`, {
     method: 'PUT',
     body: JSON.stringify({
->>>>>>> Stashed changes
       title,
       post_message
     }),
@@ -63,8 +50,4 @@ async function editFormHandler(event) {
   }
 }
 
-<<<<<<< Updated upstream
 document.querySelector('.edit-post-form').addEventListener('submit', editFormHandler);
-=======
-document.querySelector('.edit-post-form').addEventListener('submit', editFormHandler);
->>>>>>> Stashed changes
