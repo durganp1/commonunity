@@ -10,5 +10,7 @@
         |
         {{!-- DO NOT ADD 'post' IN FRONT OF 'id' --}}
         <a href = '/post/{{id}}'>{{comments.length}} {{format_plural "comment" comments.length}}</a>
+        <br>
+        <a href = '/yourpage/edit/{{id}}' class = "edit-post">Edit Post</a>
     </div>
 </article>

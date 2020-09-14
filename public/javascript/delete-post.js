@@ -1,6 +1,6 @@
 async function deleteFormHandler(event) {
     event.preventDefault();
-    await fetch(`/api/posts/${post.id}`, {
+    await fetch(`/api/posts/${id}`, {
         method: 'DELETE'
       });
   }
